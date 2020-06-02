@@ -5,7 +5,7 @@ Kenzie assignment: List2
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "Reggy Tjitradi and Ramon Hamilton"
+__author__ = "Reggy Tjitradi and Ramon Hamilton (Thanks Stew for the guidance!)"
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -31,7 +31,7 @@ def remove_adjacent(nums):
     #nums = list(dict.fromkeys(nums)), got the solution by following stack overflow, but not really clear on how it works yet
     result = []
     for num in nums:
-        if num not in result:
+        if num not in result or num != result[-1]:
             result.append(num)
     return result
 
@@ -47,8 +47,19 @@ def remove_adjacent(nums):
 
 
 def linear_merge(list1, list2):
-    # your code here
-    return
+    result = []
+      # Look at the two lists so long as both are non-empty.
+      # Take whichever element [0] is smaller.
+    while list1 and list2:
+        if list1[0] < list2[0]:
+            result.append(list1.pop(0))
+        else:
+            result.append(list2.pop(0))
+
+        # Now tack on what's left
+    result.extend(list1)
+    result.extend(list2)
+    return result
 
 
 # Provided simple test() function used in main() to print
